@@ -1,0 +1,21 @@
+Test 2
+
+With one of the following technologies Angular, React or Vue Build the following
+
+A Two page website, Home page and Contact page.
+Include a header that is shared between the page with navigation for the two pages.
+With the following API Call (http://dev3.elemental.co.za/elemental-cms/front_end/get_knowledge)
+
+
+Create an accordion on the home page with the knowledge categories (results[‘cat’]) and add the knowledge items for that category in the category accordion.
+Order the Category accordion and the Items alphabetical.
+
+
+
+Using the following API create a contact page: (http://dev3.elemental.co.za/elemental-cms/front_end/contact_form_test)
+Create a form with name, email and phone number
+All fields need to be required.
+Name filed need to be validate on only letters
+Email field need to be valid email address
+Phone number field to be valid SA phone number
+Post data to API and on successful response display success message
