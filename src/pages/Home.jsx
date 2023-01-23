@@ -58,7 +58,7 @@ const Home = () => {
           items?.map((item, index) => {
             return (
               <div key={index}>
-                <p>{item.cat}</p>
+                <p className="item-list">{item.cat}</p>
               </div>
             );
           })

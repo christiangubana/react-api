@@ -4,7 +4,8 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   h4 {
     color: #fab005;
-    padding: 10px
+    text-transform: uppercase;
+    padding: 10px;
   }
 `;
 
@@ -73,43 +74,68 @@ function ContactForm() {
       <Wrapper>
         <h4>Contact Page</h4>
       </Wrapper>
-      <div>
-      <form onSubmit={handleSubmit}>
+      <form id="contact" onSubmit={handleSubmit}>
+        <h3>Elemental Contact Form</h3>
+        <h4>Contact us for custom quote</h4>
         <label>
           Name:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          {validationErrors.name && <p>{validationErrors.name}</p>}
+          <fieldset>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Enter your name"
+              required
+            />
+            {validationErrors.name && (
+              <p className="validation-error">{validationErrors.name}</p>
+            )}
+          </fieldset>
         </label>
-        <br />
+
         <label>
           Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {validationErrors.email && <p>{validationErrors.email}</p>}
+          <fieldset>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email"
+              required
+            />
+            {validationErrors.email && (
+              <p className="validation-error">{validationErrors.email}</p>
+            )}
+          </fieldset>
         </label>
-        <br/>
         <label>
-          Phone:
-          <input
-            type="number"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-          {validationErrors.phone && <p>{validationErrors.phone}</p>}
-        </label><br/>
-        <button type="submit">Submit</button>
+          <fieldset>
+            <input
+              type="text"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Enter your phone number"
+              required
+            />
+            {validationErrors.phone && (
+              <p className="validation-error">{validationErrors.phone}</p>
+            )}
+          </fieldset>
+        </label>
+        <fieldset>
+          <button
+            name="submit"
+            type="submit"
+            id="contact-submit"
+            data-submit="...Sending"
+          >
+            Submit
+          </button>
+        </fieldset>
       </form>
-      </div>
     </>
   );
 }
