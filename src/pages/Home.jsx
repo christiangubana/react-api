@@ -15,14 +15,19 @@ const Home = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://dev3.elemental.co.za/elemental-cms/front_end/get_knowledge")
+    setIsLoading(true)
+    axios.get("http://dev3.elemental.co.za/elemental-cms/front_end/get_knowledge")
       .then((response) => {
-        console.log("RESULT", response.data.results);
-        setItems(response.data.results);
+        const result = response.data.results;
+        const sortedData = [...result].sort((a,b) => {
+          return a.first > b.first ? 1 : -1
+        })
+        setItems(sortedData);
+        setIsLoading(false)
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        setHasError(err)
+        console.error(err);
       });
   }, []);
 
