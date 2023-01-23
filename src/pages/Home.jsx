@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   h4 {
     color: #fab005;
     text-transform: uppercase;
-    padding: 10px
+    padding: 10px;
   }
 `;
 const Home = () => {
@@ -15,14 +15,28 @@ const Home = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get("http://dev3.elemental.co.za/elemental-cms/front_end/get_knowledge")
       .then((response) => {
-        console.log("RESULT", response.data.results);
-        setItems(response.data.results);
+        const result = response.data.results;
+        const sortedData = [...result].sort((a, b) => {
+          const catA = a.cat.toUpperCase();
+          const catB = b.cat.toUpperCase();
+          if (catA < catB) {
+            return -1;
+          }
+          if (catA > catB) {
+            return 1;
+          }
+          return 0;
+        });
+        setItems(sortedData);
+        setIsLoading(false);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        setHasError(err);
+        console.error(err);
       });
   }, []);
 
@@ -36,7 +50,7 @@ const Home = () => {
           <p>Loading...</p>
         ) : (
           items?.map((item, index) => {
-            console.log(typeof item)
+            console.log(typeof item);
             return (
               <div key={index}>
                 <p>{item.cat}</p>
