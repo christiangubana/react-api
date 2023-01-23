@@ -61,6 +61,11 @@ function ContactForm() {
       if (response.ok) {
         // Show success message
         alert("Success!");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+        })
       } else {
         throw new Error("Failed to submit form");
       }
