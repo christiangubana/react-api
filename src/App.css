@@ -1,3 +1,5 @@
+
+
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -22,6 +24,38 @@ body {
   display: none;
 }
 
-.errMessage {
+.errMessage,
+.validation-error {
   color: red;
 }
+
+.sec1 input {
+  width: 30%;
+  padding: 2%;
+  margin: 2%;
+  border-radius: 4px;
+  border: 1 solid gray;
+}
+.sec2 input {
+  width: 30%;
+  padding: 2%;
+  margin: 2%;
+  border-radius: 4px;
+  border: 1 solid gray;
+}
+.sec3 input {
+  width: 30%;
+  padding: 2%;
+  margin: 2%;
+  border-radius: 4px;
+  border: 1 solid gray;
+}
+
+.btn {
+  padding: 2%;
+  background-color: skyblue;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+}
+

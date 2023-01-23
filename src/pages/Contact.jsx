@@ -4,7 +4,8 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   h4 {
     color: #fab005;
-    padding: 10px
+    text-transform: uppercase;
+    padding: 10px;
   }
 `;
 
@@ -73,8 +74,9 @@ function ContactForm() {
       <Wrapper>
         <h4>Contact Page</h4>
       </Wrapper>
-      <div>
+      <div className="container">
       <form onSubmit={handleSubmit}>
+        <div className="sec1">
         <label>
           Name:
           <input
@@ -82,10 +84,13 @@ function ContactForm() {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            placeholder="Enter your name"
+            required
           />
-          {validationErrors.name && <p>{validationErrors.name}</p>}
+          {validationErrors.name && <p className="validation-error">{validationErrors.name}</p>}
         </label>
-        <br />
+        </div>
+        <div className="sec2">
         <label>
           Email:
           <input
@@ -93,21 +98,27 @@ function ContactForm() {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            placeholder="Enter your email"
+            required
           />
-          {validationErrors.email && <p>{validationErrors.email}</p>}
+          {validationErrors.email && <p className="validation-error">{validationErrors.email}</p>}
         </label>
-        <br/>
-        <label>
+        </div>
+       <div className="sec2">
+       <label>
           Phone:
           <input
-            type="number"
+            type="text"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
+            placeholder="Enter your phone number"
+            required
           />
-          {validationErrors.phone && <p>{validationErrors.phone}</p>}
-        </label><br/>
-        <button type="submit">Submit</button>
+          {validationErrors.phone && <p className="validation-error">{validationErrors.phone}</p>}
+        </label>
+       </div>
+        <button className="btn" type="submit">Submit</button>
       </form>
       </div>
     </>
