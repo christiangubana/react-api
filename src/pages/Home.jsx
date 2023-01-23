@@ -21,15 +21,10 @@ const Home = () => {
       .then((response) => {
         const result = response.data.results;
         const sortedData = [...result].sort((a, b) => {
-          const catA = a.cat.toUpperCase();
-          const catB = b.cat.toUpperCase();
-          if (catA < catB) {
-            return -1;
-          }
-          if (catA > catB) {
-            return 1;
-          }
-          return 0;
+        return a.cat > b.cat ? 1 : -1;
+        //  if(a.cat.toLowerCase() < b.cat.toLowerCase()) return -1;
+        //  if(a.cat.toLowerCase() > b.cat.toLowerCase()) return 1;
+        //  return 0;
         });
         setItems(sortedData);
         setIsLoading(false);
