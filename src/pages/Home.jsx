@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 `;
 const Home = () => {
   const [loading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
+  const [hasError, setHasError] = useState(Error());
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -21,17 +21,17 @@ const Home = () => {
       .then((response) => {
         const result = response.data.results;
         const sortedData = [...result].sort((a, b) => {
-        return a.cat > b.cat ? 1 : -1;
-        //  if(a.cat.toLowerCase() < b.cat.toLowerCase()) return -1;
-        //  if(a.cat.toLowerCase() > b.cat.toLowerCase()) return 1;
-        //  return 0;
+          return a.cat > b.cat ? 1 : -1;
+          //  if(a.cat.toLowerCase() < b.cat.toLowerCase()) return -1;
+          //  if(a.cat.toLowerCase() > b.cat.toLowerCase()) return 1;
+          //  return 0;
         });
         setItems(sortedData);
         setIsLoading(false);
       })
       .catch((err) => {
         setHasError(err);
-        console.error(err);
+        console.error(Error(err.message ?? err));
       });
   }, []);
 
@@ -45,7 +45,17 @@ const Home = () => {
           <p>Loading...</p>
         ) : (
           items?.map((item, index) => {
-            console.log(typeof item);
+            return (
+              <div key={index}>
+                <p>{item.cat}</p>
+              </div>
+            );
+          })
+        )}
+        {hasError ? (
+          <p className="errMessage">{hasError.message}</p>
+        ) : (
+          items?.map((item, index) => {
             return (
               <div key={index}>
                 <p>{item.cat}</p>
